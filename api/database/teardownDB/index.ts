@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // Since this is being utilized by "jest.json", paths must be relative
 
 import "snackables";
@@ -5,7 +6,7 @@ import mongoose from "mongoose";
 import { connectToDB, createConnectionToDatabase } from "../index";
 import { logErrorMessage, logInfoMessage } from "../../../logger";
 
-const { DATABASE, DROP, EXIT } = process.env;
+const { DATABASE_URI, DROP, EXIT } = process.env;
 
 /**
  * Function to tear down the testing Mongo database.
@@ -26,7 +27,7 @@ const teardownDB = async (): Promise<any> => {
     await db.close();
 
     logInfoMessage(
-      `\x1b[2mutils/\x1b[0m\x1b[1mteardownDB.js\x1b[0m (${DATABASE})\n`
+      `\x1b[2mutils/\x1b[0m\x1b[1mteardownDB.js\x1b[0m (${DATABASE_URI})\n`
     );
 
     mongoose.connection.close();

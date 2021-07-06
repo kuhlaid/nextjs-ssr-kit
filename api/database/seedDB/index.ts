@@ -7,7 +7,7 @@ import { logErrorMessage, logInfoMessage } from "../../../logger";
 import User from "../../models/user";
 import seeds from "./seeds";
 
-const { DATABASE, EXIT, SEED } = process.env;
+const { DATABASE_URI, EXIT, SEED } = process.env;
 
 /**
  * Function to seed the testing Mongo database.
@@ -30,7 +30,7 @@ const seedDB = async (): Promise<any> => {
     await db.close();
 
     logInfoMessage(
-      `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE})\n`
+      `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE_URI})\n`
     );
 
     mongoose.connection.close();

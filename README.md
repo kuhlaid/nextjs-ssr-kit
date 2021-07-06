@@ -124,7 +124,7 @@ Provided in this boilerplate is an example of how to integrate a RESTful API uti
 
 In order to interact with the API, you'll need to:
 
-- <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">Install MongoDB</a> and make sure the service is up and running.
+- Create a test cluster in <a href="https://cloud.mongodb.com/">Cloud MongoDB Atlas</a> and save yourself the hassle of setting up MongoDb locally.
 - While the development server is running, open your browser and navigate to <a href="http://localhost:3000/users">http://localhost:3000/users</a>.
 
 <hr />
@@ -295,7 +295,7 @@ By default, this project attempts to import `.env` files placed within the `root
 - `APIPORT` (required and used [here](api/server.ts#L19))
 - `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L8))
 - `CLIENT` (required and used [here](next.config.js#L8), [here](next.config.js#L14) and [here](api/middlewares/index.ts#L32))
-- `DATABASE` (required and used [here](api/database/index.ts))
+- `DATABASE_URI` (required and used [here](api/database/index.ts))
 - `PORT` (required and used [here](next.config.js#L14))
 
 <hr />
