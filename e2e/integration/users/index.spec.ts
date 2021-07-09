@@ -1,4 +1,4 @@
-const selectCardOption = (option: string, item: number = 1): void => {
+const selectUserCardOption = (option: string, item: number = 1): void => {
   cy.findByTestId("dropdown-container").eq(item).click();
 
   cy.findByTestId("dropdown-menu").within(() => {
@@ -6,7 +6,7 @@ const selectCardOption = (option: string, item: number = 1): void => {
   });
 };
 
-const clearAlerts = (): void => {
+const clearUserAlerts = (): void => {
   cy.findByTestId("alert").click();
 
   cy.wait(1000);
@@ -19,7 +19,7 @@ context("Users Page", () => {
 
   beforeEach(() => {
     cy.visit("/users");
-    clearAlerts();
+    clearUserAlerts();
   });
 
   after(() => {
@@ -33,7 +33,7 @@ context("Users Page", () => {
   });
 
   it("deletes a user card", () => {
-    selectCardOption("delete");
+    selectUserCardOption("delete");
 
     cy.findByTestId("card-container").should("have.length", 2);
 
@@ -41,13 +41,13 @@ context("Users Page", () => {
   });
 
   it("displays an edit form", () => {
-    selectCardOption("edit");
+    selectUserCardOption("edit");
 
     cy.findByTestId("user-form").should("exist");
   });
 
   it("renders errors if a required input is empty", () => {
-    selectCardOption("edit");
+    selectUserCardOption("edit");
 
     cy.findByTestId("userName").clear();
 
@@ -57,7 +57,7 @@ context("Users Page", () => {
   });
 
   it("displays an error if an edited username matches a pre-existing username", () => {
-    selectCardOption("edit");
+    selectUserCardOption("edit");
 
     cy.findByTestId("userName").clear().type("bobbin4apples");
 
@@ -67,7 +67,7 @@ context("Users Page", () => {
   });
 
   it("cancels updating the user", () => {
-    selectCardOption("edit");
+    selectUserCardOption("edit");
 
     cy.findByTestId("cancel").click();
 
@@ -75,7 +75,7 @@ context("Users Page", () => {
   });
 
   it("updates a user", () => {
-    selectCardOption("edit");
+    selectUserCardOption("edit");
 
     cy.findByTestId("userName").clear().type("snapplecracklepop");
 

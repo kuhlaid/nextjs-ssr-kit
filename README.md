@@ -1,6 +1,10 @@
+# NextJs SSR Kit
+
+This a template for creating a NextJs app with testing and best practices and much more. The build scripts and configurations assume you are using a Linux shell. If you are a Windows user, then setup WSL and use the 'Remote - WSL' plugin within VSCode to run and test the app locally (DO NOT USE Powershell or DOS).
+
 ![logo.png](https://i.imgur.com/xd1mL6K.png)
 
-<img src="https://img.shields.io/github/package-json/v/mattcarlotta/nextjs-ssr-kit?style=for-the-badge"></img> [![Codecov](https://img.shields.io/codecov/c/github/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://codecov.io/gh/mattcarlotta/nextjs-ssr-kit) [![Open Issues](https://img.shields.io/github/issues-raw/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://github.com/mattcarlotta/nextjs-ssr-kit/issues) [![Dependencies](https://img.shields.io/david/mattcarlotta/nextjs-ssr-kit.svg?style=for-the-badge)](https://david-dm.org/mattcarlotta/nextjs-ssr-kit) [![License](https://img.shields.io/github/license/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/LICENSE)
+[![Codecov](https://img.shields.io/codecov/c/github/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://codecov.io/gh/mattcarlotta/nextjs-ssr-kit) [![Open Issues](https://img.shields.io/github/issues-raw/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://github.com/mattcarlotta/nextjs-ssr-kit/issues) [![Dependencies](https://img.shields.io/david/mattcarlotta/nextjs-ssr-kit.svg?style=for-the-badge)](https://david-dm.org/mattcarlotta/nextjs-ssr-kit) [![License](https://img.shields.io/github/license/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/LICENSE)
 
 ## Table of contents
 
@@ -72,10 +76,8 @@
 |   └── tsconfig.prod.json
 |
 ├── build
-├── database
 ├── e2e
 ├── logger
-├── models
 ├── public
 ├── src
 |   ├── @types
@@ -91,6 +93,11 @@
 |   └── utils
 |
 ├── .browserslistrc
+├── .env.dev
+├── .env.seed
+├── .env.staging
+├── .env.teardown
+├── .env.test
 ├── .eslintignore
 ├── .eslintrc
 ├── .gitignore
@@ -98,13 +105,15 @@
 ├── .prettierc
 ├── .stylelintrc
 ├── babel.config.js
+├── CHANGELOG.md
 ├── jest.json
 ├── next.env.d.ts
 ├── next.config.json
+├── package.json
+├── README.md
 └── tsconfig.json
 </code></pre>
 </details>
-<br />
 
 <hr />
 
@@ -112,8 +121,8 @@
 
 1 - Clone the repository.
 
-```
-git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
+```git
+git clone git@github.com:kuhlaid/nextjs-ssr-kit.git
 ```
 
 2 - Run `yarn install` to install dependencies.
@@ -150,7 +159,7 @@ In order to interact with the API, you'll need to:
 | `t:watchall`     | Tests and watches all `.test.tsx` files in `src` for changes.                               |
 | `tsc`            | Type checks all `.ts`/`.tsx` within the `src` and `api` directories.                        |
 
-† Note: Before running this command, you must edit the [.env.prod](.env.prod#L2) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
+† Note: Before running on production, you must set the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host. Production WILL NOT use a .env.prod file.
 
 <hr />
 
@@ -206,7 +215,7 @@ In order to interact with the API, you'll need to:
 - api/jest.json: jest config for API.
 - api/nodemon.json: Development options for reloading the API process on save.
 - api/prod-path.js: Resolving aliased modules for API in production.
-- api/server.ts: Express server setup.
+- api/server.ts: Express API server setup.
 - api/tsconfig.json: TS compiler options for the API (integration with IDE)
 - api/tsconfig.prod.json: TS compiler options for building the API (excludes tests)
 - build: API compiled source.
@@ -220,7 +229,7 @@ In order to interact with the API, you'll need to:
 <summary>Click to expand misc configurations</summary>
 <pre><code>
 - .github: Continous integration using Github Actions and repo issue templates.
-- e2e: Cypress end-to-end test suites.
+- e2e: Cypress end-to-end test suites (.spec.ts files under the e2e directory).
 - logger: Shareable chalk console notifications.
 - .browserslistrc: Browsers list config (for babel transpiling).
 - .prettierc: Prettier config.
@@ -256,7 +265,7 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/zalmoxisus/redux-devtools-extension">Redux DevTools Extension</a>
 - <a href="https://redux-saga.js.org/">Redux Saga</a>
 - <a href="https://github.com/sass/dart-sassr">Sass</a>
-- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
+- <a href="https://github.com/no-shot/env">no-shot/env</a>
 - <a href="https://stylelint.io/">Stylelint</a>
 - <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
 - <a href="https://github.com/stylelint/stylelint-config-recommended">Stylelint-Config-Recommended</a>
@@ -275,7 +284,7 @@ Click [here](package.json) to see latest versions.
 - <a href="https://mongoosejs.com/">Mongoose</a>
 - <a href="https://github.com/expressjs/morgan">Morgan</a>
 - <a href="https://github.com/prettier/prettier">Prettier</a>
-- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
+- <a href="https://github.com/no-shot/env">no-shot/env</a>
 </code></pre>
 </details>
 <br />
@@ -290,7 +299,7 @@ By default, most directories within the root and `src` directories are [aliased]
 
 ## ENV Setup
 
-By default, this project attempts to import `.env` files placed within the `root` directory according to the `process.env.ENV_LOAD` variable (`dev`, `staging`, `prod`, `test`, ...etc; see snackables [documentation](https://github.com/mattcarlotta/snackables/blob/main/README.md) for more info). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
+By default, this project attempts to import `.env` files placed within the `root` directory according to the `process.env.ENV_LOAD` variable (`dev`, `staging`, `test`, ...etc; see no-shot/env [documentation](https://github.com/no-shot/env/blob/main/README.md) for more info). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
 - `APIPORT` (required and used [here](api/server.ts#L19))
 - `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L8))
@@ -302,7 +311,7 @@ By default, this project attempts to import `.env` files placed within the `root
 
 ## Known Issues
 
-If you run into any issues, please fill out an issue report <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/issues">here</a>.
+If you run into any issues, please fill out an issue report <a href="https://github.com/kuhlaid/nextjs-ssr-kit/issues">here</a>.
 
 ### Unresolved
 
@@ -313,3 +322,12 @@ If you run into any issues, please fill out an issue report <a href="https://git
 Support this boilerplate by becoming a contributor. Your github logo will show up here with a link to your profile.
 
 <a href="https://github.com/kimberleykelly" target="_blank"><img src="https://avatars0.githubusercontent.com/u/32412752?s=120&v=4" height="30px"><span style="margin-left: 5px">kimberleykelly</span></a>
+
+## ToDo
+
+// note sure why the value of 2 works in this statement found in
+// src\components\Forms\TagForm\__tests__\TagForm.test.tsx
+expect(wrapper.find("[data-testid='errors']")).toHaveLength(2);
+
+// try to track connection pool instances in the app
+<http://mongodb.github.io/node-mongodb-native/3.5/reference/management/cmap-monitoring/>

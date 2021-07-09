@@ -16,12 +16,8 @@ const { document } = new JSDOM(
   "<!DOCTYPE html><body><div id='__next'></div></body>"
 ).window;
 global.document = document;
-global.window = document.defaultView;
+if (document.defaultView) global.window = document.defaultView;
 global.HTMLElement = window.HTMLElement;
 global.HTMLAnchorElement = window.HTMLAnchorElement;
 global.React = React;
-
-global.navigator = {
-  userAgent: "node.js"
-};
 /* eslint-enable */

@@ -4,10 +4,12 @@ import bluebird from "bluebird";
 import mongoose from "mongoose";
 import { logErrorMessage, logInfoMessage } from "../../logger";
 
-const { DATABASE_URI, NODE_ENV } = process.env;
+const { DATABASE_URI, NODE_ENV, DB_POOL_SIZE } = process.env;
 const inTesting = NODE_ENV === "test";
+const intPoolSize = Number(DB_POOL_SIZE);
 
 const options = {
+  poolSize: intPoolSize, // sets the max number of db connections to allow per instance connection pool (https://mongoosejs.com/docs/connections.html); this will not directly apply to local development which somehow seems to create multiple connection pools or does not honor the single instance connection pool cache
   useNewUrlParser: true, // avoids DeprecationWarning: current URL string parser is deprecated
   useCreateIndex: true, // avoids DeprecationWarning: collection.ensureIndex is deprecated.
   useFindAndModify: false, // avoids DeprecationWarning: collection.findAndModify is deprecated.

@@ -1,3 +1,6 @@
+/**
+ * @abstract This script is the main route wrapper for listing users.
+ */
 import * as React from "react";
 import { connect } from "react-redux";
 import { BsFillPersonPlusFill } from "react-icons/bs";

@@ -1,12 +1,10 @@
 import { BsFillHouseFill } from "react-icons/bs";
 import { ReactElement } from "~types";
 
+// here we simply use className="mr-2" to set Bootstrap styling
 const HomeIcon = (): ReactElement => (
-  <span
-    data-testid="home-icon"
-    style={{ marginRight: "4px", fontSize: "20px" }}
-  >
-    <BsFillHouseFill style={{ position: "relative", top: 3, marginRight: 4 }} />
+  <span data-testid="home-icon" className="mr-2">
+    <BsFillHouseFill />
   </span>
 );
 

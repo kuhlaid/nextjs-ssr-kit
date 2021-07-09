@@ -1,3 +1,6 @@
+/**
+ * @abstract This script gets the API server setup.
+ */
 import express from "express";
 import middlewares from "~middlewares";
 import { connectToDB } from "~database";

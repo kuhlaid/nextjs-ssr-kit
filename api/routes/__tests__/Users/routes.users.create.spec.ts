@@ -17,7 +17,7 @@ const data = {
   }
 };
 
-describe("Get All Users Route", () => {
+describe("Get Create Users Route", () => {
   beforeAll(async () => {
     await connectToDB();
   });

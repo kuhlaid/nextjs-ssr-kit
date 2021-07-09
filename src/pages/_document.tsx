@@ -1,3 +1,8 @@
+/**
+ * @abstract This custom document seems to add PWA-like html elements to the main document wrapper for the app.
+ * @reference https://nextjs.org/docs/advanced-features/custom-document
+ */
+
 import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { version } from "../../package.json";

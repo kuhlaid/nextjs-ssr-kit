@@ -6,6 +6,7 @@ import GlobalStylesheet from "~styles/globalStylesheet";
 import { withRedux } from "~store";
 import "react-toastify/dist/ReactToastify.css";
 import { AppProps, ReactElement } from "~types";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
   React.useEffect(() => {

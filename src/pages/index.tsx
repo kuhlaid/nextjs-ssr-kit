@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import { FaCoffee } from "react-icons/fa";
+import { FaCoffee, FaHashtag } from "react-icons/fa";
 import Center from "~components/Layout/Center";
 import Link from "~components/Navigation/Link";
 import SubTitle from "~components/Layout/SubTitle";
@@ -26,16 +26,13 @@ const Home = (): ReactElement => (
         alt="ssrLogoLight.png"
       />
       <SubTitle>Edit files in the root directory and save to reload.</SubTitle>
-      <Link href="/users">
-        <FaCoffee
-          style={{
-            position: "relative",
-            top: 6,
-            fontSize: 23,
-            marginRight: 6
-          }}
-        />
-        See Example
+      <Link href="/users" className="mr-2">
+        <FaCoffee className="mr-2" />
+        View Users
+      </Link>
+      <Link href="/tags">
+        <FaHashtag className="mr-2" />
+        Tags
       </Link>
     </PageContainer>
   </Center>

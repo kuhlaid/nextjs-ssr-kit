@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import userReducer from "./Users";
+import tagReducer from "./Tags";
 import serverReducer from "./Server";
 
 const reducers = {
   server: serverReducer,
-  users: userReducer
+  users: userReducer,
+  tags: tagReducer
 };
 
 const RootReducer = combineReducers(reducers);

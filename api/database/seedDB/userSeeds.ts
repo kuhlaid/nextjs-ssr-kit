@@ -1,4 +1,4 @@
-const seeds = [
+const userSeeds = [
   {
     email: "thefifthelement@example.com",
     firstName: "Bob",
@@ -45,4 +45,4 @@ const seeds = [
     }
   }
 ];
-export default seeds;
+export default userSeeds;

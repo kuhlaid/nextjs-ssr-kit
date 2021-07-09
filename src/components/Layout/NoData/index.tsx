@@ -8,7 +8,12 @@ const styles = {
   margin: 0
 } as CSSProperties;
 
-const NoData = (): ReactElement => (
+// add any properties we want here
+export type NoDataProps = {
+  dataType: string;
+};
+
+const NoData = ({ dataType }: NoDataProps): ReactElement => (
   <Container dataTestId="no-data" innerStyle={{ height: 400 }}>
     <Flex
       direction="column"
@@ -17,7 +22,7 @@ const NoData = (): ReactElement => (
     >
       <FaChartArea style={{ fontSize: 100, color: "#d4d3d3" }} />
       <h1 style={styles}>No Data Found</h1>
-      <p style={styles}>Add a user or seed the database.</p>
+      <p style={styles}>Add a {dataType} or seed the database.</p>
     </Flex>
   </Container>
 );

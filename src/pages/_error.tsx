@@ -1,3 +1,7 @@
+/**
+ * @abstract Fallback error page.
+ */
+
 import Head from "next/head";
 import Center from "~components/Layout/Center";
 import ErrorMessage from "~components/Layout/ErrorMessage";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import isEmpty from "lodash.isempty";
 import UserForm from "~components/Forms/UserForm";
-import Card from "~components/Layout/Card";
+import Card from "~components/Layout/UserCard";
 import Container from "~components/Layout/Container";
 import FadeIn from "~components/Layout/FadeIn";
 import NoData from "~components/Layout/NoData";
@@ -58,7 +58,7 @@ const DisplayUserList = ({
         </Container>
       ))
     ) : (
-      <NoData />
+      <NoData dataType="user" />
     )}
   </>
 );

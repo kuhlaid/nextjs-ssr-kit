@@ -53,6 +53,12 @@ export type UserData = {
   };
 };
 
+export type TagData = {
+  _id: string;
+  tagName?: string;
+  category?: string;
+};
+
 /// COMPONENTS ///
 
 export type BaseFieldProps = {
